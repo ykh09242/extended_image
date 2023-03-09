@@ -2,16 +2,15 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
+import 'package:extended_image/src/editor/crop_layer.dart';
+import 'package:extended_image/src/editor/editor_utils.dart';
+import 'package:extended_image/src/extended_image.dart';
+import 'package:extended_image/src/image/raw_image.dart';
+import 'package:extended_image/src/utils.dart';
 import 'package:extended_image_library/extended_image_library.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import '../extended_image.dart';
-import '../image/raw_image.dart';
-import '../utils.dart';
-import 'crop_layer.dart';
-import 'editor_utils.dart';
 
 ///
 ///  create by zmtzawqlp on 2019/8/22

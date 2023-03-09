@@ -1,9 +1,8 @@
 import 'dart:math';
 
+import 'package:extended_image/src/typedef.dart';
+import 'package:extended_image/src/utils.dart';
 import 'package:flutter/material.dart';
-
-import '../typedef.dart';
-import '../utils.dart';
 
 class EditActionDetails {
   double _rotateRadian = 0.0;

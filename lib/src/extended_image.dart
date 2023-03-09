@@ -1,17 +1,16 @@
+import 'package:extended_image/src/border_painter.dart';
+import 'package:extended_image/src/editor/editor.dart';
+import 'package:extended_image/src/gesture/gesture.dart';
+import 'package:extended_image/src/gesture/slide_page.dart';
+import 'package:extended_image/src/gesture/slide_page_handler.dart';
+import 'package:extended_image/src/image/raw_image.dart';
+import 'package:extended_image/src/typedef.dart';
+import 'package:extended_image/src/utils.dart';
 import 'package:extended_image_library/extended_image_library.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Image;
 import 'package:flutter/semantics.dart';
-
-import 'border_painter.dart';
-import 'editor/editor.dart';
-import 'gesture/gesture.dart';
-import 'gesture/slide_page.dart';
-import 'gesture/slide_page_handler.dart';
-import 'image/raw_image.dart';
-import 'typedef.dart';
-import 'utils.dart';
 
 /// extended image base on official
 class ExtendedImage extends StatefulWidget {

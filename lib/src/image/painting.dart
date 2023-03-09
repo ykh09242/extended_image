@@ -1,9 +1,8 @@
 import 'dart:math';
 import 'dart:ui' as ui show Image;
 
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-
-import '../../extended_image.dart';
 
 void paintExtendedImage(
     {required Canvas canvas,

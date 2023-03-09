@@ -1,12 +1,11 @@
+import 'package:extended_image/src/gesture/page_view/gesture_page_view.dart';
+import 'package:extended_image/src/gesture/slide_page.dart';
+import 'package:extended_image/src/gesture/utils.dart';
+import 'package:extended_image/src/image/raw_image.dart';
+import 'package:extended_image/src/typedef.dart';
+import 'package:extended_image/src/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import '../image/raw_image.dart';
-import '../typedef.dart';
-import '../utils.dart';
-import 'page_view/gesture_page_view.dart';
-import 'slide_page.dart';
-import 'utils.dart';
 
 Map<Object?, GestureDetails?> _gestureDetailsCache =
     <Object?, GestureDetails?>{};

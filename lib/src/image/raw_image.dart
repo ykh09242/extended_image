@@ -1,12 +1,11 @@
 import 'dart:ui' as ui show Image;
 
+import 'package:extended_image/src/editor/editor_utils.dart';
+import 'package:extended_image/src/gesture/utils.dart';
+import 'package:extended_image/src/image/render_image.dart';
+import 'package:extended_image/src/typedef.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import '../editor/editor_utils.dart';
-import '../gesture/utils.dart';
-import '../typedef.dart';
-import 'render_image.dart';
 
 /// A widget that displays a [dart:ui.Image] directly.
 ///

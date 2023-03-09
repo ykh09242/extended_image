@@ -1,8 +1,7 @@
+import 'package:extended_image/src/extended_image.dart';
+import 'package:extended_image/src/gesture/slide_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'extended_image.dart';
-import 'gesture/slide_page.dart';
 
 enum LoadState {
   //loading

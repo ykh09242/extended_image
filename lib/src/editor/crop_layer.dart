@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:flutter/material.dart';
 
-import '../utils.dart';
-import 'editor_utils.dart';
+import 'package:extended_image/src/editor/editor_utils.dart';
+import 'package:extended_image/src/utils.dart';
+import 'package:flutter/material.dart';
 
 ///
 ///  create by zhoumaotuo on 2019/8/22

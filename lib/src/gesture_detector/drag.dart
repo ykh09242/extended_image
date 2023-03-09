@@ -1,8 +1,9 @@
 // ignore_for_file: unnecessary_null_comparison
 
+import 'package:extended_image/src/gesture_detector/velocity_tracker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
-import 'velocity_tracker.dart';
+
 part 'drag_gesture_recognizer_mixin.dart';
 
 enum _DragState {

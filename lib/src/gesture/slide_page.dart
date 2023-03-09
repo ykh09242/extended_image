@@ -1,9 +1,8 @@
+import 'package:extended_image/src/gesture/gesture.dart';
+import 'package:extended_image/src/gesture/slide_page_handler.dart';
+import 'package:extended_image/src/gesture/utils.dart';
+import 'package:extended_image/src/typedef.dart';
 import 'package:flutter/material.dart';
-
-import '../typedef.dart';
-import 'gesture.dart';
-import 'slide_page_handler.dart';
-import 'utils.dart';
 
 enum SlideAxis {
   both,

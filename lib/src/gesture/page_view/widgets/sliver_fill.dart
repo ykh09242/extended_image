@@ -1,9 +1,8 @@
 // ignore_for_file: unnecessary_null_comparison, always_put_control_body_on_new_line
 
+import 'package:extended_image/src/gesture/page_view/rendering/sliver_fill.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
-import '../rendering/sliver_fill.dart';
 
 /// A sliver that contains multiple box children that each fills the viewport.
 ///

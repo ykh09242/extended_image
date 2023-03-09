@@ -1,9 +1,8 @@
+import 'package:extended_image/src/gesture/slide_page.dart';
+import 'package:extended_image/src/gesture/utils.dart';
+import 'package:extended_image/src/typedef.dart';
+import 'package:extended_image/src/utils.dart';
 import 'package:flutter/material.dart';
-
-import '../typedef.dart';
-import '../utils.dart';
-import 'slide_page.dart';
-import 'utils.dart';
 
 ///
 ///  create by zmtzawqlp on 2019/6/14
