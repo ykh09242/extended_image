@@ -4,11 +4,11 @@ version: 7.0.2
 homepage: https://github.com/fluttercandies/extended_image
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: ">=2.19.0-0 <4.0.0"
   flutter: '>=3.7.0'
 
 dependencies:
-  extended_image_library: ^3.4.0
+  extended_image_library: ^3.4.1
   flutter:
     sdk: flutter
-  meta: ^1.7.0
+  meta: ^1.9.0
