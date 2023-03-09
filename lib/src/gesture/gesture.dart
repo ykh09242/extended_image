@@ -1,13 +1,12 @@
-import 'package:extended_image/src/gesture/utils.dart';
-
-import 'package:extended_image/src/image/raw_image.dart';
-import 'package:extended_image/src/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../image/raw_image.dart';
 import '../typedef.dart';
+import '../utils.dart';
 import 'page_view/gesture_page_view.dart';
 import 'slide_page.dart';
+import 'utils.dart';
 
 Map<Object?, GestureDetails?> _gestureDetailsCache =
     <Object?, GestureDetails?>{};
@@ -26,9 +25,8 @@ class ExtendedImageGesture extends StatefulWidget {
     this.extendedImageState, {
     this.imageBuilder,
     CanScaleImage? canScaleImage,
-    Key? key,
-  })  : canScaleImage = canScaleImage ?? _defaultCanScaleImage,
-        super(key: key);
+    super.key,
+  }) : canScaleImage = canScaleImage ?? _defaultCanScaleImage;
   final ExtendedImageState extendedImageState;
   final ImageBuilderForGesture? imageBuilder;
   final CanScaleImage canScaleImage;
@@ -116,15 +114,15 @@ class ExtendedImageGestureState extends State<ExtendedImageGesture>
       onScaleUpdate: handleScaleUpdate,
       onScaleEnd: handleScaleEnd,
       onDoubleTap: _handleDoubleTap,
-      child: image,
       behavior: _gestureConfig?.hitTestBehavior,
+      child: image,
     );
 
     image = Listener(
-      child: image,
       onPointerDown: _handlePointerDown,
       onPointerSignal: _handlePointerSignal,
       behavior: _gestureConfig!.hitTestBehavior,
+      child: image,
     );
 
     return image;
@@ -169,7 +167,6 @@ class ExtendedImageGestureState extends State<ExtendedImageGesture>
     handleScaleUpdate(ScaleUpdateDetails(
       focalPoint: doubleTapPosition,
       scale: scale / _startingScale!,
-      focalPointDelta: Offset.zero,
     ));
     if (scale < _gestureConfig!.minScale || scale > _gestureConfig!.maxScale) {
       handleScaleEnd(ScaleEndDetails());
@@ -235,8 +232,7 @@ class ExtendedImageGestureState extends State<ExtendedImageGesture>
           scale: 1.0 +
               _reverseIf((dy.abs() > dx.abs() ? dy : dx) *
                   _gestureConfig!.speed /
-                  1000.0),
-          focalPointDelta: Offset.zero));
+                  1000.0)));
       handleScaleEnd(ScaleEndDetails());
     }
   }

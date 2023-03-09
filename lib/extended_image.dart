@@ -1,3 +1,4 @@
+/// This library does important things
 library extended_image;
 
 export 'package:extended_image_library/extended_image_library.dart'

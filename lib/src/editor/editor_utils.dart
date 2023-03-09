@@ -1,7 +1,8 @@
 import 'dart:math';
-import 'package:extended_image/src/typedef.dart';
+
 import 'package:flutter/material.dart';
 
+import '../typedef.dart';
 import '../utils.dart';
 
 class EditActionDetails {
@@ -42,11 +43,7 @@ class EditActionDetails {
   }
 
   ///image
-  Rect? get screenDestinationRect => _screenDestinationRect;
-
-  void setScreenDestinationRect(Rect value) {
-    _screenDestinationRect = value;
-  }
+  Rect? screenDestinationRect;
 
   bool get flipX => _flipX;
 
@@ -223,14 +220,10 @@ class EditActionDetails {
       if (scaleDelta != 1.0) {
         Offset focalPoint = screenFocalPoint ?? _screenDestinationRect!.center;
         focalPoint = Offset(
-          focalPoint.dx
-              .clamp(
-                  _screenDestinationRect!.left, _screenDestinationRect!.right)
-              .toDouble(),
-          focalPoint.dy
-              .clamp(
-                  _screenDestinationRect!.top, _screenDestinationRect!.bottom)
-              .toDouble(),
+          focalPoint.dx.clamp(
+              _screenDestinationRect!.left, _screenDestinationRect!.right),
+          focalPoint.dy.clamp(
+              _screenDestinationRect!.top, _screenDestinationRect!.bottom),
         );
 
         _screenDestinationRect = Rect.fromLTWH(

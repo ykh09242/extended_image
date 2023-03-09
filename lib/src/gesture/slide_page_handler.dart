@@ -1,5 +1,6 @@
-import 'package:extended_image/src/typedef.dart';
 import 'package:flutter/material.dart';
+
+import '../typedef.dart';
 import '../utils.dart';
 import 'slide_page.dart';
 import 'utils.dart';
@@ -11,6 +12,7 @@ import 'utils.dart';
 /// for loading/failed widget
 class ExtendedImageSlidePageHandler extends StatefulWidget {
   const ExtendedImageSlidePageHandler({
+    super.key,
     this.child,
     this.extendedImageSlidePageState,
     this.heroBuilderForSlidingPage,
@@ -49,8 +51,8 @@ class ExtendedImageSlidePageHandlerState
       onScaleStart: _handleScaleStart,
       onScaleUpdate: _handleScaleUpdate,
       onScaleEnd: _handleScaleEnd,
-      child: widget.child,
       behavior: HitTestBehavior.translucent,
+      child: widget.child,
     );
     if (_extendedImageSlidePageState != null) {
       result = widget.heroBuilderForSlidingPage?.call(result) ?? result;

@@ -1,13 +1,15 @@
 import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
-import 'package:extended_image/src/image/raw_image.dart';
-import 'package:extended_image/src/utils.dart';
+
 import 'package:extended_image_library/extended_image_library.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
 import '../extended_image.dart';
+import '../image/raw_image.dart';
+import '../utils.dart';
 import 'crop_layer.dart';
 import 'editor_utils.dart';
 
@@ -16,12 +18,11 @@ import 'editor_utils.dart';
 ///
 
 class ExtendedImageEditor extends StatefulWidget {
-  ExtendedImageEditor({required this.extendedImageState, Key? key})
+  ExtendedImageEditor({required this.extendedImageState, super.key})
       : assert(extendedImageState.imageWidget.fit == BoxFit.contain,
             'Make sure the image is all painted to crop,the fit of image must be BoxFit.contain'),
         assert(extendedImageState.imageWidget.image is ExtendedImageProvider,
-            'Make sure the image provider is ExtendedImageProvider, we will get raw image data from it'),
-        super(key: key);
+            'Make sure the image provider is ExtendedImageProvider, we will get raw image data from it');
   final ExtendedImageState extendedImageState;
   @override
   ExtendedImageEditorState createState() => ExtendedImageEditorState();
@@ -93,9 +94,6 @@ class ExtendedImageEditorState extends State<ExtendedImageEditor> {
       alignment: extendedImage.alignment,
       repeat: extendedImage.repeat,
       centerSlice: extendedImage.centerSlice,
-      //matchTextDirection: extendedImage.matchTextDirection,
-      //don't support TextDirection for editor
-      matchTextDirection: false,
       invertColors: widget.extendedImageState.invertColors,
       filterQuality: extendedImage.filterQuality,
       editActionDetails: _editActionDetails,
@@ -138,7 +136,6 @@ class ExtendedImageEditorState extends State<ExtendedImageEditor> {
                           widget.extendedImageState.extendedImageInfo!.image
                               .height
                               .toDouble()),
-                      flipHorizontally: false,
                       fit: widget.extendedImageState.imageWidget.fit,
                       centerSlice:
                           widget.extendedImageState.imageWidget.centerSlice,
@@ -167,14 +164,12 @@ class ExtendedImageEditorState extends State<ExtendedImageEditor> {
                   _editorConfig!,
                   layoutRect,
                   key: _layerKey,
-                  fit: BoxFit.contain,
                 );
               }),
             ),
           ],
         ));
     result = Listener(
-      child: result,
       onPointerDown: (_) {
         _layerKey.currentState?.pointerDown(true);
       },
@@ -186,6 +181,7 @@ class ExtendedImageEditorState extends State<ExtendedImageEditor> {
       //   pointerDown(false);
       // },
       behavior: _editorConfig!.hitTestBehavior,
+      child: result,
     );
     return result;
   }

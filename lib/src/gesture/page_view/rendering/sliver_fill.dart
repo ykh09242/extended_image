@@ -26,7 +26,7 @@ class ExtendedRenderSliverFillViewport
   ///
   /// The [childManager] argument must not be null.
   ExtendedRenderSliverFillViewport({
-    required RenderSliverBoxChildManager childManager,
+    required super.childManager,
     double viewportFraction = 1.0,
     double pageSpacing = 0.0,
   })  : assert(viewportFraction != null),
@@ -34,8 +34,7 @@ class ExtendedRenderSliverFillViewport
         assert(pageSpacing != null),
         assert(pageSpacing >= 0.0),
         _viewportFraction = viewportFraction,
-        _pageSpacing = pageSpacing,
-        super(childManager: childManager);
+        _pageSpacing = pageSpacing;
 
   @override
   double get itemExtent =>
@@ -232,8 +231,9 @@ class ExtendedRenderSliverFillViewport
 
     // We may have started the layout while scrolled to the end, which would not
     // expose a new child.
-    if (estimatedMaxScrollOffset == trailingScrollOffset)
+    if (estimatedMaxScrollOffset == trailingScrollOffset) {
       childManager.setDidUnderflow(true);
+    }
     childManager.didFinishLayout();
   }
 

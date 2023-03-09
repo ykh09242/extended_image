@@ -50,6 +50,10 @@ class MyTextSelectionControls extends TextSelectionControls {
       const Size(_kHandleSize, _kHandleSize);
 
   /// Builder for material-style copy/paste text selection toolbar.
+  @Deprecated(
+    'Use `contextMenuBuilder` instead. '
+    'This feature was deprecated after v3.3.0-0.5.pre.',
+  )
   @override
   Widget buildToolbar(
     BuildContext context,

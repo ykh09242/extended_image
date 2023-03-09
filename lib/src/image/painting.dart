@@ -1,7 +1,9 @@
 import 'dart:math';
 import 'dart:ui' as ui show Image;
-import 'package:extended_image/extended_image.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../extended_image.dart';
 
 void paintExtendedImage(
     {required Canvas canvas,
@@ -116,7 +118,6 @@ void paintExtendedImage(
           inputSize: inputSize,
           rect: editActionDetails.cropRectPadding!.deflateRect(rect),
           fit: fit,
-          flipHorizontally: false,
           scale: scale,
           centerSlice: centerSlice,
           alignment: alignment);
@@ -197,8 +198,9 @@ void paintExtendedImage(
       canvas.drawImageRect(image, sourceRect, destinationRect, paint);
     } else {
       for (final Rect tileRect
-          in _generateImageTileRects(rect, destinationRect, repeat))
+          in _generateImageTileRects(rect, destinationRect, repeat)) {
         canvas.drawImageRect(image, sourceRect, tileRect, paint);
+      }
     }
   } else {
     canvas.scale(1 / scale);
@@ -207,9 +209,10 @@ void paintExtendedImage(
           _scaleRect(destinationRect, scale), paint);
     } else {
       for (final Rect tileRect
-          in _generateImageTileRects(rect, destinationRect, repeat))
+          in _generateImageTileRects(rect, destinationRect, repeat)) {
         canvas.drawImageNine(image, _scaleRect(centerSlice, scale),
             _scaleRect(tileRect, scale), paint);
+      }
     }
   }
 

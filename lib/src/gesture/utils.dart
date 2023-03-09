@@ -1,6 +1,8 @@
 import 'dart:math';
-import 'package:extended_image/src/typedef.dart';
+
 import 'package:flutter/material.dart';
+
+import '../typedef.dart';
 import '../utils.dart';
 import 'slide_page.dart';
 
@@ -11,18 +13,19 @@ import 'slide_page.dart';
 
 ///gesture
 
+@immutable
 class Boundary {
-  Boundary({
+  const Boundary({
     this.left = false,
     this.right = false,
     this.top = false,
     this.bottom = false,
   });
 
-  bool left;
-  bool right;
-  bool bottom;
-  bool top;
+  final bool left;
+  final bool right;
+  final bool bottom;
+  final bool top;
 
   @override
   String toString() {
@@ -33,7 +36,7 @@ class Boundary {
   int get hashCode => Object.hash(left, right, top, bottom);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     if (other.runtimeType != runtimeType) {
       return false;
     }
@@ -92,7 +95,7 @@ class GestureDetails {
   bool _computeHorizontalBoundary = false;
   bool get computeHorizontalBoundary => _computeHorizontalBoundary;
 
-  Boundary _boundary = Boundary();
+  Boundary _boundary = const Boundary();
   Boundary get boundary => _boundary;
 
   //true: user zoom/pan
@@ -114,6 +117,7 @@ class GestureDetails {
   Offset? slidePageOffset;
 
   @override
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
   int get hashCode => Object.hash(
       offset,
       totalScale,
@@ -128,7 +132,8 @@ class GestureDetails {
       slidePageOffset);
 
   @override
-  bool operator ==(dynamic other) {
+  // ignore: avoid_equals_and_hash_code_on_mutable_classes
+  bool operator ==(Object other) {
     if (other.runtimeType != runtimeType) {
       return false;
     }
@@ -247,30 +252,35 @@ class GestureDetails {
         return layout.bottomCenter - result.bottomCenter;
       case InitialAlignment.bottomRight:
         return layout.bottomRight - result.bottomRight;
-      default:
+      case null:
         return Offset.zero;
     }
   }
 
   Rect _innerCalculateFinalDestinationRect(
       Rect layoutRect, Rect destinationRect) {
-    _boundary = Boundary();
     final Offset center = _getCenter(destinationRect)!;
     Rect result = _getDestinationRect(destinationRect, center);
 
+    final Map<String, bool> boundary = <String, bool>{
+      'left': false,
+      'right': false,
+      'top': false,
+      'bottom': false,
+    };
     if (_computeHorizontalBoundary) {
       //move right
       if (result.left.greaterThanOrEqualTo(layoutRect.left)) {
         result = Rect.fromLTWH(
             layoutRect.left, result.top, result.width, result.height);
-        _boundary.left = true;
+        boundary['left'] = true;
       }
 
       ///move left
       if (result.right.lessThanOrEqualTo(layoutRect.right)) {
         result = Rect.fromLTWH(layoutRect.right - result.width, result.top,
             result.width, result.height);
-        _boundary.right = true;
+        boundary['right'] = true;
       }
     }
 
@@ -279,16 +289,23 @@ class GestureDetails {
       if (result.bottom.lessThanOrEqualTo(layoutRect.bottom)) {
         result = Rect.fromLTWH(result.left, layoutRect.bottom - result.height,
             result.width, result.height);
-        _boundary.bottom = true;
+        boundary['bottom'] = true;
       }
 
       //move up
       if (result.top.greaterThanOrEqualTo(layoutRect.top)) {
         result = Rect.fromLTWH(
             result.left, layoutRect.top, result.width, result.height);
-        _boundary.top = true;
+        boundary['top'] = true;
       }
     }
+
+    _boundary = Boundary(
+      left: boundary['left']!,
+      right: boundary['right']!,
+      top: boundary['top']!,
+      bottom: boundary['bottom']!,
+    );
 
     _computeHorizontalBoundary =
         result.left.lessThanOrEqualTo(layoutRect.left) &&

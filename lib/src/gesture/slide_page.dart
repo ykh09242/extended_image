@@ -27,8 +27,8 @@ class ExtendedImageSlidePage extends StatefulWidget {
     this.resetPageDuration = const Duration(milliseconds: 500),
     this.slideType = SlideType.onlyImage,
     this.onSlidingPage,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   ///The [child] contained by the ExtendedImageGesturePage.
   final Widget? child;
@@ -242,7 +242,7 @@ class ExtendedImageSlidePageState extends State<ExtendedImageSlidePage>
       );
     }
 
-    result = Container(
+    result = ColoredBox(
       color: _popping ? Colors.transparent : pageColor,
       child: result,
     );

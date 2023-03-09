@@ -18,8 +18,7 @@ class _PointAtTime {
 class ExtendedVelocityTracker extends VelocityTracker
     with VelocityTrackerMixin {
   /// Create a new velocity tracker for a pointer [kind].
-  ExtendedVelocityTracker.withKind(PointerDeviceKind kind)
-      : super.withKind(kind);
+  ExtendedVelocityTracker.withKind(super.kind) : super.withKind();
 
   static const int _assumePointerMoveStoppedMilliseconds = 40;
   static const int _historySize = 20;

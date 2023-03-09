@@ -1,8 +1,9 @@
-import 'package:extended_image/extended_image.dart';
-import 'package:extended_image/src/gesture_detector/drag.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+
+import '../../../extended_image.dart';
+import '../../gesture_detector/drag.dart';
 
 export 'rendering/sliver_fill.dart';
 export 'widgets/page_controller.dart';
@@ -34,7 +35,7 @@ bool _defaultCanScrollPage(GestureDetails? gestureDetails) => true;
 ///page view to support gesture for image
 class ExtendedImageGesturePageView extends StatefulWidget {
   ExtendedImageGesturePageView({
-    Key? key,
+    super.key,
     this.scrollDirection = Axis.horizontal,
     this.reverse = false,
     ExtendedPageController? controller,
@@ -49,8 +50,7 @@ class ExtendedImageGesturePageView extends StatefulWidget {
         physics = physics != null
             ? _defaultScrollPhysics.applyTo(physics)
             : _defaultScrollPhysics,
-        canScrollPage = canScrollPage ?? _defaultCanScrollPage,
-        super(key: key);
+        canScrollPage = canScrollPage ?? _defaultCanScrollPage;
 
   /// Creates a scrollable list that works page by page using widgets that are
   /// created on demand.
@@ -65,7 +65,7 @@ class ExtendedImageGesturePageView extends StatefulWidget {
   /// [itemBuilder] will be called only with indices greater than or equal to
   /// zero and less than [itemCount].
   ExtendedImageGesturePageView.builder({
-    Key? key,
+    super.key,
     this.scrollDirection = Axis.horizontal,
     this.reverse = false,
     ExtendedPageController? controller,
@@ -82,13 +82,12 @@ class ExtendedImageGesturePageView extends StatefulWidget {
         physics = physics != null
             ? _defaultScrollPhysics.applyTo(physics)
             : _defaultScrollPhysics,
-        canScrollPage = canScrollPage ?? _defaultCanScrollPage,
-        super(key: key);
+        canScrollPage = canScrollPage ?? _defaultCanScrollPage;
 
   /// Creates a scrollable list that works page by page with a custom child
   /// model.
   ExtendedImageGesturePageView.custom({
-    Key? key,
+    super.key,
     this.scrollDirection = Axis.horizontal,
     this.reverse = false,
     ExtendedPageController? controller,
@@ -100,8 +99,7 @@ class ExtendedImageGesturePageView extends StatefulWidget {
     this.preloadPagesCount = 0,
   })  : controller = controller ?? _defaultPageController,
         physics = _defaultScrollPhysics,
-        canScrollPage = canScrollPage ?? _defaultCanScrollPage,
-        super(key: key);
+        canScrollPage = canScrollPage ?? _defaultCanScrollPage;
 
   ///Whether we can scroll page
   final CanScrollPage canScrollPage;
@@ -181,7 +179,7 @@ class ExtendedImageGesturePageViewState
     if (value != null && !value.mounted) {
       return;
     }
-    extendedImageGestureStates.add(value!);
+    extendedImageGestureStates.add(value);
   }
 
   final Set<ExtendedImageGestureState?> extendedImageGestureStates =

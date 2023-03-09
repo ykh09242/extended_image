@@ -4,12 +4,12 @@ part of 'page_controller.dart';
 class ExtendedPagePosition extends ScrollPositionWithSingleContext
     implements PageMetrics {
   ExtendedPagePosition({
-    required ScrollPhysics physics,
-    required ScrollContext context,
+    required super.physics,
+    required super.context,
     this.initialPage = 0,
     bool keepPage = true,
     double viewportFraction = 1.0,
-    ScrollPosition? oldPosition,
+    super.oldPosition,
     double pageSpacing = 0.0,
   })  : assert(initialPage != null),
         assert(keepPage != null),
@@ -21,11 +21,8 @@ class ExtendedPagePosition extends ScrollPositionWithSingleContext
         _pageSpacing = pageSpacing,
         _pageToUseOnStartup = initialPage.toDouble(),
         super(
-          physics: physics,
-          context: context,
           initialPixels: null,
           keepScrollOffset: keepPage,
-          oldPosition: oldPosition,
         );
 
   final int initialPage;
@@ -55,7 +52,6 @@ class ExtendedPagePosition extends ScrollPositionWithSingleContext
       duration: duration,
       curve: curve,
       alignmentPolicy: alignmentPolicy,
-      targetRenderObject: null,
     );
   }
 
